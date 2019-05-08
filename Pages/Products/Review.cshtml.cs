@@ -29,10 +29,13 @@ namespace MakeupProject.Pages_Products
 
         public IActionResult OnGet(int? id)
         {
-            Products = new SelectList(_context.Product.ToList(), "ID", "Brand", id);
-            // I wanted to add another SelectList here like this
-            //Products = new SelectList(_context.Product.ToList(), "ID", "Name", id);
-            //but it still only pulls one property I'm guessing because I'm pulling from Products
+            var query = _context.Product.Select(p => new {
+                ID = p.ID, 
+                Display = $"{p.Brand} - {p.Name}"
+            });
+
+            Products = new SelectList(_context.Product.ToList(), "ID", "Display", id);
+            
             return Page();
         }
 
