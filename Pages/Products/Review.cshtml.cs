@@ -34,8 +34,8 @@ namespace MakeupProject.Pages_Products
                 Display = $"{p.Brand} - {p.Name}"
             });
 
-            Products = new SelectList(_context.Product.ToList(), "ID", "Display", id);
-            
+            Products = new SelectList(query.ToList(), "ID", "Display", id);
+
             return Page();
         }
 

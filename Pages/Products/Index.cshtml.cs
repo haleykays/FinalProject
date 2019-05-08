@@ -29,8 +29,8 @@ namespace MakeupProject.Pages_Products
         public int TotalPages {get; set;}
         [BindProperty(SupportsGet = true)]
         public string CurrentSort {get; set;}
-        public string PriceSort {get; set;}   
-        public string ProductBrand {get; set;}     
+        public string PriceSort {get; set;}     
+        public string SearchString {get; set;} 
 
 
         public async Task OnGetAsync(string sortOrder)
@@ -45,11 +45,17 @@ namespace MakeupProject.Pages_Products
             };
             SortList = new SelectList(sortItems, "Value", "Text", CurrentSort);
 
-            
             var products = await _context.Product.ToListAsync();
+
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                 products = products.Where(b => b.Brand.Contains(SearchString));
+            }
 
             TotalCount = products.Count(); 
             TotalPages = (int)Math.Ceiling(TotalCount / (double)PageSize);
+
+            ;
 
             switch(sortOrder)
             {
