@@ -1,0 +1,41 @@
+@page
+@model RecommendModel
+@{
+    ViewData["Title"] = "Tell us what you want to see!";
+}
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-borderless table-dark">
+  <thead>
+    <tr>
+      <th scope="col-3">Face</th>
+      <th scope="col-3">Eyes</th>
+      <th scope="col-3">Lips</th>
+      <th scope="col-3"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr><img src="/img/Foundation.jpg" width="250" height="200"></tr>
+      <tr><img src="/img/Eyes.jpg" width="300" height="200"></tr>
+      <tr><img src="/img/Lips.jpg" width="250" height="200"></tr>
+
+    <tr>
+<form method="post">
+    <td><input type="checkbox" name="selectedProductTypes" value="1"/> Most Popular</td>
+    <td><input type="checkbox" name="selectedProductTypes" value="2"/> Most Popular</td>
+    <td><input type="checkbox" name="selectedProductTypes" value="3"/> Most Popular</td>
+    <td><input type="submit" value="Submit" class="btn btn-primary"/></td>
+</form>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+@if (Model.Product != null)
+{
+    @foreach(var item in Model.Product)
+    {
+        <p>@item.Brand @item.Name @item.Price @item.BuyAt</p>
+    }
+}
+

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MakeupProject.Models; 
+using Microsoft.EntityFrameworkCore; 
 
 namespace MakeupProject.Pages
 {
@@ -20,7 +21,7 @@ namespace MakeupProject.Pages
 
         public void OnGet()
         {
-            faceProduct = _context.Product.Where(p => p.Type == "Face").ToList();
+            faceProduct = _context.Product.Include(p => p.Reviews).Where(p => p.Type == "Face").ToList();
         }
     }
 }

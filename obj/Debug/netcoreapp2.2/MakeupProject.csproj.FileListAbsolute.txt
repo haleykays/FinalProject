@@ -36,3 +36,5 @@ C:\Users\haley\Documents\SPRING2019\Advanced Business Programming\MakeupProject\
 C:\Users\haley\Documents\SPRING2019\Advanced Business Programming\MakeupProject\obj\Debug\netcoreapp2.2\Razor\Pages\Products\Details.g.cshtml.cs
 C:\Users\haley\Documents\SPRING2019\Advanced Business Programming\MakeupProject\obj\Debug\netcoreapp2.2\Razor\Pages\Products\Edit.g.cshtml.cs
 C:\Users\haley\Documents\SPRING2019\Advanced Business Programming\MakeupProject\obj\Debug\netcoreapp2.2\Razor\Pages\Products\Index.g.cshtml.cs
+C:\Users\haley\Documents\SPRING2019\Advanced Business Programming\MakeupProject\obj\Debug\netcoreapp2.2\Razor\Pages\Recommend.g.cshtml.cs
+C:\Users\haley\Documents\SPRING2019\Advanced Business Programming\MakeupProject\obj\Debug\netcoreapp2.2\Razor\Pages\Products\Review.g.cshtml.cs

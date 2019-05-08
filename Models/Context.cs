@@ -4,7 +4,7 @@ namespace MakeupProject.Models
 {
     public class MakeupProjectDbContext : DbContext
     {
-        public MakeupProjectDbContext (DbContextOptions<MakeupProjectDbContext> options)
+        public MakeupProjectDbContext(DbContextOptions<MakeupProjectDbContext> options)
             : base(options)
             {
             }

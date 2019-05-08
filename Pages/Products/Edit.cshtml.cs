@@ -12,9 +12,9 @@ namespace MakeupProject.Pages_Products
 {
     public class EditModel : PageModel
     {
-        private readonly MakeupProjectContext _context;
+        private readonly MakeupProjectDbContext _context;
 
-        public EditModel(MakeupProjectContext context)
+        public EditModel(MakeupProjectDbContext context)
         {
             _context = context;
         }
@@ -29,7 +29,7 @@ namespace MakeupProject.Pages_Products
                 return NotFound();
             }
 
-            Products = await _context.Products.FirstOrDefaultAsync(m => m.ID == id);
+            Products = await _context.Product.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Products == null)
             {
@@ -68,7 +68,7 @@ namespace MakeupProject.Pages_Products
 
         private bool ProductsExists(int id)
         {
-            return _context.Products.Any(e => e.ID == id);
+            return _context.Product.Any(e => e.ID == id);
         }
     }
 }

@@ -11,9 +11,9 @@ namespace MakeupProject.Pages_Products
 {
     public class CreateModel : PageModel
     {
-        private readonly MakeupProjectContext _context;
+        private readonly MakeupProjectDbContext _context;
 
-        public CreateModel(MakeupProjectContext context)
+        public CreateModel(MakeupProjectDbContext context)
         {
             _context = context;
         }
@@ -33,7 +33,7 @@ namespace MakeupProject.Pages_Products
                 return Page();
             }
 
-            _context.Products.Add(Products);
+            _context.Product.Add(Products);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

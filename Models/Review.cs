@@ -7,6 +7,7 @@ namespace MakeupProject.Models
 {
     public class Review
     {
+        [Display(Name = "Products")]
         public int ID {get; set;}
         [Range(1, 5)]
         public int Stars {get; set;}

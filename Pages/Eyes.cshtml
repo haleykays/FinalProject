@@ -49,7 +49,7 @@
                 @Html.DisplayNameFor(model => model.eyeProduct[0].BuyAt)
             </th>
             <th>
-                @Html.DisplayNameFor(Model => Model.eyeProduct[0].Reviews)
+                Stars
             </th>
             <th></th>
         </tr>
@@ -72,7 +72,17 @@
                 @Html.DisplayFor(modelItem => item.BuyAt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Reviews)
+                @{
+                  if(item.Reviews.Count > 0)
+                  {
+                    double avg = item.Reviews.Average(r => r.Stars);
+                    @Html.DisplayFor(modelItem => avg)
+                  }
+                  else
+                  {
+                    @:No Reviews Yet
+                  }
+                }
             </td>
             </tr>
 }

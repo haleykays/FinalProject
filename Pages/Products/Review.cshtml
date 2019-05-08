@@ -1,0 +1,50 @@
+@page 
+@model MakeupProject.Pages_Products.ReviewModel
+
+@{
+    ViewData["Title"] = "Add Review";
+}
+
+<h1>Create</h1>
+
+<h4>Review</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+                <div class="form-group">
+                <label asp-for="Review.ProductsID" value="" class="control-label">Name</label>
+                <select asp-for="Review.ProductsID" asp-items="Model.Products" class="form-control">
+                    <option value="">-- Select Name --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Review.Stars" value="" class="control-label">Stars</label>
+                <select class="form-control" asp-for="Review.Stars" id="exampleFormControlSelect1">
+                    <option></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Review.ReviewText" class="control-label">Review</label>
+                <textarea class="form-control" asp-for="Review.ReviewText" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div>
+                    <input type="submit" value="Add Review" class="btn btn-primary" />
+            </div>
+            <div>
+    <a asp-page="Index">Back to List</a>
+</div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

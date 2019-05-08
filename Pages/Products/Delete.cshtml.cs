@@ -11,9 +11,9 @@ namespace MakeupProject.Pages_Products
 {
     public class DeleteModel : PageModel
     {
-        private readonly MakeupProjectContext _context;
+        private readonly MakeupProjectDbContext _context;
 
-        public DeleteModel(MakeupProjectContext context)
+        public DeleteModel(MakeupProjectDbContext context)
         {
             _context = context;
         }
@@ -28,7 +28,7 @@ namespace MakeupProject.Pages_Products
                 return NotFound();
             }
 
-            Products = await _context.Products.FirstOrDefaultAsync(m => m.ID == id);
+            Products = await _context.Product.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Products == null)
             {
@@ -44,11 +44,11 @@ namespace MakeupProject.Pages_Products
                 return NotFound();
             }
 
-            Products = await _context.Products.FindAsync(id);
+            Products = await _context.Product.FindAsync(id);
 
             if (Products != null)
             {
-                _context.Products.Remove(Products);
+                _context.Product.Remove(Products);
                 await _context.SaveChangesAsync();
             }
 

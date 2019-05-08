@@ -11,14 +11,16 @@ namespace MakeupProject.Pages_Products
 {
     public class DetailsModel : PageModel
     {
-        private readonly MakeupProjectContext _context;
+        private readonly MakeupProjectDbContext _context;
 
-        public DetailsModel(MakeupProjectContext context)
+        public DetailsModel(MakeupProjectDbContext context)
         {
             _context = context;
         }
 
         public Products Products { get; set; }
+
+        public IList<Review> Reviews {get; set;}
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,7 +29,7 @@ namespace MakeupProject.Pages_Products
                 return NotFound();
             }
 
-            Products = await _context.Products.FirstOrDefaultAsync(m => m.ID == id);
+            Products = await _context.Product.Include(p => p.Reviews).FirstOrDefaultAsync(m => m.ID == id);
 
             if (Products == null)
             {

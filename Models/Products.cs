@@ -7,6 +7,7 @@ namespace MakeupProject.Models
 {
     public class Products
     {
+        [Display(Name ="Products")]
         public int ID {get; set;}
         [Required]
         public string Brand {get; set;}
