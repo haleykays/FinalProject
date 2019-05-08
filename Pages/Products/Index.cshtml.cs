@@ -20,7 +20,6 @@ namespace MakeupProject.Pages_Products
         }
 
         public IList<Products> Products { get;set; }
-
         public SelectList SortList {get; set;}
         public int PageSize {get; set;} = 10;
         [BindProperty(SupportsGet = true)]
@@ -49,7 +48,7 @@ namespace MakeupProject.Pages_Products
 
             if (!string.IsNullOrEmpty(SearchString))
             {
-                 products = products.Where(b => b.Brand.Contains(SearchString));
+                 products = products.Where(s => s.Brand.Contains(SearchString));
             }
 
             TotalCount = products.Count(); 
