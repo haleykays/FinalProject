@@ -15,9 +15,11 @@
     </tr>
   </thead>
   <tbody>
-      <tr><img src="/img/Foundation.jpg" width="250" height="200"></tr>
-      <tr><img src="/img/Eyes.jpg" width="300" height="200"></tr>
-      <tr><img src="/img/Lips.jpg" width="250" height="200"></tr>
+      <tr><img src="/img/Foundation.jpg" width="260" height="220"></tr>
+      <tr><img src="/img/Eyes.jpg" width="300" height="220"></tr>
+      <tr><img src="/img/Lips.jpg" width="270" height="220"></tr>
+      <tr><img src="/img/Recommend.jpg" width="278" height="220"></tr>
+
 
     <tr>
 <form method="post">
@@ -33,9 +35,61 @@
 <hr />
 @if (Model.Product != null)
 {
+    
     @foreach(var item in Model.Product)
     {
-        <p>@item.Brand @item.Name @item.Price @item.BuyAt</p>
+  <table class="table table-dark">
+    <thead>
+        <tr>
+            <th>
+                Brand
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Purchase at
+            </th>
+            <th>
+                Stars
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuyAt)
+            </td>
+            <td>
+                @{
+                  if(item.Reviews.Count > 0)
+                  {
+                    double avg = item.Reviews.Average(r => r.Stars);
+                    @Html.DisplayFor(modelItem => avg)
+                  }
+                  else
+                  {
+                    @:No Reviews Yet
+                  }
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+<hr />
+        //<p>Brand : @item.Brand Name: @item.Name Price: @item.Price Purchase at: @item.BuyAt</p>
     }
 }
 

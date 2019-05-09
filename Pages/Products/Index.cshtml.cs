@@ -28,7 +28,8 @@ namespace MakeupProject.Pages_Products
         public int TotalPages {get; set;}
         [BindProperty(SupportsGet = true)]
         public string CurrentSort {get; set;}
-        public string PriceSort {get; set;}     
+        public string PriceSort {get; set;} 
+        [BindProperty(SupportsGet = true)]    
         public string SearchString {get; set;} 
 
 
@@ -48,13 +49,11 @@ namespace MakeupProject.Pages_Products
 
             if (!string.IsNullOrEmpty(SearchString))
             {
-                 products = products.Where(s => s.Brand.Contains(SearchString));
+                 products = products.Where(s => s.Brand.Contains(SearchString)).ToList();
             }
 
             TotalCount = products.Count(); 
             TotalPages = (int)Math.Ceiling(TotalCount / (double)PageSize);
-
-            ;
 
             switch(sortOrder)
             {
